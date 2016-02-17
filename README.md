@@ -9,7 +9,7 @@ Webviews with parameter ```cache == true ``` should be **preloaded** in backgrou
 Please write clean & maintainable code to implement the relevant functionality. Simply writing correct code isn't enough.
 
 ### Specification:
-* Preload cacheable webview (so it's not load when user request anymore)
+* Preload cacheable webview (so it's not load when open the webview even in the first time)
 * Usage of thrid party libraries is allowed
 * Don't worry about design, just use standard controls
 * Handle fundamental lifecycle flow
