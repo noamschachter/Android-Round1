@@ -14,14 +14,14 @@ import android.webkit.WebViewClient;
 public class WebViewClientEX extends WebViewClient {
 
     private ProgressDialogHelper m_ProgressDialogHelper;
-    private Context mContext;
+    private Context m_Context;
     private boolean m_IsLoadingFromCache = false;
-    private String url;
+    private String m_url;
 
     public WebViewClientEX(Context context, String url, boolean isLoadingFromCache) {
-        this.mContext = context;
-        this.url = url;
-        this.m_IsLoadingFromCache = isLoadingFromCache;
+        m_Context = context;
+        m_url = url;
+        m_IsLoadingFromCache = isLoadingFromCache;
         m_ProgressDialogHelper = new ProgressDialogHelper(context);
     }
 
@@ -29,7 +29,7 @@ public class WebViewClientEX extends WebViewClient {
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
         super.onPageStarted(view, url, favicon);
         if (!m_IsLoadingFromCache)
-            m_ProgressDialogHelper.showProgressDialog(mContext.getString(R.string.loading));
+            m_ProgressDialogHelper.showProgressDialog(m_Context.getString(R.string.loading));
     }
 
     @Override
@@ -45,9 +45,9 @@ public class WebViewClientEX extends WebViewClient {
 
     @Override
     public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-        if (view.getSettings().getCacheMode() == WebSettings.LOAD_CACHE_ONLY && url.equals(view.getUrl())) {
+        if (view.getSettings().getCacheMode() == WebSettings.LOAD_CACHE_ONLY && m_url.equals(view.getUrl())) {
             view.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-            view.loadUrl(url);
+            view.loadUrl(m_url);
             m_IsLoadingFromCache = false;
             return;
         }

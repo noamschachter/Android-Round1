@@ -13,10 +13,10 @@ import android.widget.TextView;
  */
 public class ListAdapter extends BaseAdapter {
     private String[] m_DataArray;
-    private Context mContext;
+    private Context m_Context;
 
     public ListAdapter(Context context, String[] dataArray) {
-        this.mContext = context;
+        this.m_Context = context;
         this.m_DataArray = dataArray;
     }
 
@@ -40,7 +40,7 @@ public class ListAdapter extends BaseAdapter {
         ViewHolder holder;
 
         if (convertView == null) {
-            LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
+            LayoutInflater inflater = ((Activity) m_Context).getLayoutInflater();
             convertView = inflater.inflate(R.layout.list_item, parent, false);
 
             holder = new ViewHolder();
